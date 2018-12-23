@@ -2,13 +2,18 @@
   "name": "doc",
   "version": "0.1.0",
   "private": true,
+  "moduleRoots": [
+    "src"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "codemirror": "^5.42.2",
     "vue": "^2.5.17",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
