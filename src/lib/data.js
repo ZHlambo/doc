@@ -5,19 +5,19 @@ module.exports = [{
     "path": "C:\\Users\\Administrator\\Desktop\\koa-project\\src\\mysql\\raml\\client\\cat.raml",
     "routes": [{
       "verb": "get",
-      "uri": "/cat/root",
+      "uri": "/client/cat/root",
       "description": "获取第一级分类",
       "handlerFunc": "rootCat",
       "groupBy": "cat"
     }, {
       "verb": "get",
-      "uri": "/cat/:id",
+      "uri": "/client/cat/:id",
       "description": "获取分类的子集分类",
       "handlerFunc": "getCatChild",
       "groupBy": "cat"
     }, {
       "verb": "get",
-      "uri": "/cat/:id/sku",
+      "uri": "/client/cat/:id/sku",
       "description": "获取分类下所有产品",
       "handlerFunc": "getCatSkus",
       "groupBy": "cat"
@@ -27,13 +27,13 @@ module.exports = [{
     "path": "C:\\Users\\Administrator\\Desktop\\koa-project\\src\\mysql\\raml\\client\\sku.raml",
     "routes": [{
       "verb": "get",
-      "uri": "/skus",
+      "uri": "/client/skus",
       "description": "获取产品列表",
       "handlerFunc": "listSku",
       "groupBy": "sku"
     }, {
       "verb": "get",
-      "uri": "/sku/:id/info",
+      "uri": "/client/sku/:id/info",
       "description": "获取单个产品信息",
       "handlerFunc": "getSkuInfo",
       "groupBy": "sku"
@@ -43,25 +43,25 @@ module.exports = [{
     "path": "C:\\Users\\Administrator\\Desktop\\koa-project\\src\\mysql\\raml\\client\\user.raml",
     "routes": [{
       "verb": "delete",
-      "uri": "/user",
+      "uri": "/client/user",
       "description": "注销用户",
       "handlerFunc": "deleteUser",
       "groupBy": "auth"
     }, {
       "verb": "get",
-      "uri": "/user/info",
+      "uri": "/client/user/info",
       "description": "获取用户信息",
       "handlerFunc": "getUserInfo",
       "groupBy": "auth"
     }, {
       "verb": "put",
-      "uri": "/user/info",
+      "uri": "/client/user/info",
       "description": "修改用户信息",
       "handlerFunc": "putUserInfo",
       "groupBy": "auth"
     }, {
       "verb": "post",
-      "uri": "/user/login",
+      "uri": "/client/user/login",
       "description": "用户登录",
       "handlerFunc": "userLogin",
       "groupBy": "user"
@@ -74,11 +74,35 @@ module.exports = [{
     "path": "C:\\Users\\Administrator\\Desktop\\koa-project\\src\\mysql\\raml\\manage\\cat.raml",
     "routes": [{
       "verb": "post",
-      "uri": "/cat",
+      "uri": "/manage/cat",
       "description": "创建分类",
       "handlerFunc": "createCat",
       "groupBy": "auth",
       "body": {
+        "params": {
+          "data": [
+            {
+              "name": "name",
+              "type": "string",
+              "desc": "分类名称",
+              "must": true
+            },
+            {
+              "name": "parentid",
+              "type": "string",
+              "desc": "父分类id",
+              "must": false
+            }
+          ],
+          "headers": [
+            {
+              "name": "ip",
+              "type": "string",
+              "desc": "电脑ip地址",
+              "must": false
+            }
+          ]
+        },
         "example": {
           "name": "catName"
         },
@@ -86,37 +110,37 @@ module.exports = [{
       }
     }, {
       "verb": "get",
-      "uri": "/cat/root",
+      "uri": "/manage/cat/root",
       "description": "获取第一级分类",
       "handlerFunc": "rootCat",
       "groupBy": "cat"
     }, {
       "verb": "delete",
-      "uri": "/cat/:id",
+      "uri": "/manage/cat/:id",
       "description": "删除单个分类",
       "handlerFunc": "deleteCat",
       "groupBy": "auth"
     }, {
       "verb": "get",
-      "uri": "/cat/:id/child",
+      "uri": "/manage/cat/:id/child",
       "description": "获取分类的子集分类",
       "handlerFunc": "getCatChild",
       "groupBy": "cat"
     }, {
       "verb": "get",
-      "uri": "/cat/:id/info",
+      "uri": "/manage/cat/:id/info",
       "description": "获取单个分类信息",
       "handlerFunc": "getCatInfo",
       "groupBy": "cat"
     }, {
       "verb": "put",
-      "uri": "/cat/:id/info",
+      "uri": "/manage/cat/:id/info",
       "description": "修改单个分类信息",
       "handlerFunc": "putCatInfo",
       "groupBy": "auth"
     }, {
       "verb": "get",
-      "uri": "/cat/:id/sku",
+      "uri": "/manage/cat/:id/sku",
       "description": "获取分类下所有产品",
       "handlerFunc": "getCatSkus",
       "groupBy": "cat"
@@ -126,31 +150,31 @@ module.exports = [{
     "path": "C:\\Users\\Administrator\\Desktop\\koa-project\\src\\mysql\\raml\\manage\\sku.raml",
     "routes": [{
       "verb": "get",
-      "uri": "/skus",
+      "uri": "/manage/skus",
       "description": "获取产品列表",
       "handlerFunc": "listSku",
       "groupBy": "sku"
     }, {
       "verb": "post",
-      "uri": "/sku",
+      "uri": "/manage/sku",
       "description": "创建单个产品",
       "handlerFunc": "createSku",
       "groupBy": "auth"
     }, {
       "verb": "delete",
-      "uri": "/sku/:id",
+      "uri": "/manage/sku/:id",
       "description": "删除单个产品",
       "handlerFunc": "deleteSku",
       "groupBy": "auth"
     }, {
       "verb": "get",
-      "uri": "/sku/:id/info",
+      "uri": "/manage/sku/:id/info",
       "description": "获取单个产品信息",
       "handlerFunc": "getSkuInfo",
       "groupBy": "auth"
     }, {
       "verb": "put",
-      "uri": "/sku/:id/info",
+      "uri": "/manage/sku/:id/info",
       "description": "修改单个产品信息",
       "handlerFunc": "putSkuInfo",
       "groupBy": "auth"
@@ -160,7 +184,7 @@ module.exports = [{
     "path": "C:\\Users\\Administrator\\Desktop\\koa-project\\src\\mysql\\raml\\manage\\staff.raml",
     "routes": [{
       "verb": "post",
-      "uri": "/staff/login",
+      "uri": "/manage/staff/login",
       "description": "员工登录",
       "handlerFunc": "staffLogin",
       "groupBy": "staff"
@@ -170,31 +194,31 @@ module.exports = [{
     "path": "C:\\Users\\Administrator\\Desktop\\koa-project\\src\\mysql\\raml\\manage\\user.raml",
     "routes": [{
       "verb": "get",
-      "uri": "/users",
+      "uri": "/manage/users",
       "description": "获取用户列表",
       "handlerFunc": "listUser",
       "groupBy": "auth"
     }, {
       "verb": "post",
-      "uri": "/user",
+      "uri": "/manage/user",
       "description": "创建单个用户",
       "handlerFunc": "createUser",
       "groupBy": "auth"
     }, {
       "verb": "delete",
-      "uri": "/user/:id",
+      "uri": "/manage/user/:id",
       "description": "删除单个用户",
       "handlerFunc": "deleteUser",
       "groupBy": "auth"
     }, {
       "verb": "get",
-      "uri": "/user/:id/info",
+      "uri": "/manage/user/:id/info",
       "description": "获取单个用户信息",
       "handlerFunc": "getUserInfo",
       "groupBy": "auth"
     }, {
       "verb": "put",
-      "uri": "/user/:id/info",
+      "uri": "/manage/user/:id/info",
       "description": "修改单个用户信息",
       "handlerFunc": "putUserInfo",
       "groupBy": "auth"

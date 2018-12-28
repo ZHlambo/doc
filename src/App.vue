@@ -13,6 +13,7 @@
   color: #2c3e50;
   width: 1020px;
   margin: auto;
+  font-size: 14px;
 }
 #nav {
   padding: 30px;

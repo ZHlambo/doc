@@ -3,9 +3,11 @@ import vueResource from "vue-resource"
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import http from "./lib/http.js"
 
 Vue.config.productionTip = false
 Vue.use(vueResource)
+Vue.prototype.$_http = http;
 
 Vue.mixin({
   methods:{

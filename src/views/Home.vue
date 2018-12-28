@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import http from "../lib/http.js";
 import DocView from "../common/DocView.vue";
 import FilterView from "../components/FilterView.vue";
 import data from "../lib/data.js"
@@ -25,8 +24,6 @@ export default {
   },
   mounted () {
       this.setData({docs: data})
-      console.log(data);
-
     // http.get("/api/docs").then(res => {
     //   let docs = [];
     //   for (let key in res) {
